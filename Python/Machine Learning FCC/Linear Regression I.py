@@ -5,9 +5,13 @@ import pandas as pd
 import matplotlib as plt
 import random
 from IPython.display import clear_output
+
 from six.moves import urllib
 
-# import tensorflow.compat.feature_column as fc
+# Replacement:
+from tensorflow import feature_column as fc
+
+# Doesn't Work: import tensorflow.compat.feature_column as fc
 
 import tensorflow as tf
 
