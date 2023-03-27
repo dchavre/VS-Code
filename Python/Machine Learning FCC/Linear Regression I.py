@@ -3,6 +3,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 import numpy as np
 import pandas as pd
 import matplotlib as plt
+import random
 from IPython.display import clear_output
 from six.moves import urllib
 
@@ -64,6 +65,9 @@ print(result['accuracy']) # The result variable us simiply a dict of stats about
 
 result = list(linear_est.predict(eval_input_fn))
 
-print(dfeval.loc[3])
-print(y_eval.loc[3])
-print(result[3]['probabilities'][1])
+n = random.randint(0, 266)
+
+
+print(dfeval.loc[n])
+print(y_eval.loc[n])
+print(result[n]['probabilities'][1])
