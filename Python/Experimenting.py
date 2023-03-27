@@ -1,14 +1,16 @@
-import numpy as np
+# importing tensorflow
+import tensorflow as tf
 
-matrix = np.array([[2, 2, 2],
-                   [2, 2, 2]])
-vector = np.array([[5],
-                    [2],
-                    [1]])
-print('Matrix:')
-print(matrix)
-print('Vector:')
-print(vector)
+# creating nodes in computation graph
+node1 = tf.constant(3, dtype = tf.int32)
+node2 = tf.constant(5, dtype = tf.int32)
+node3 = tf.add(node1, node2)
 
-print('Product: ')
-print(np.matmul(matrix, vector))
+# create tensorflow session object
+sess = tf.Session()
+
+# evaluating node3 and printing the result
+print("Sum of node1 and node2 is:", sess.run(node3))
+
+# closing the session
+sess.close()
