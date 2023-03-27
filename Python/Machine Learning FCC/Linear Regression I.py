@@ -42,14 +42,28 @@ for feature_name in NUMERIC_COLUMNS:
 
 def make_input_fn(data_df, label_df, num_epochs=10, shuffle=True, batch_size=32):
     def input_function(): # Inner function, will be returned
-        ds = tf.data.Dataset.from_tensor_slices((dict(data_df), label_df)) # creates tf.data.Dataset object with data and its la
+        ds = tf.data.Dataset.from_tensor_slices((dict(data_df), label_df)) # creates tf.data.Dataset object
         if shuffle:
             ds = ds.shuffle(1000) # Randomizes order of data
         ds = ds.batch(batch_size).repeat(num_epochs) # Splits data set into batches of 32 and repeats the process for the num of epochs
         return ds # returns a batch of the dataset
     return input_function # returns a function object for use
 
-train_input_fn = make_input_fn(dftrain, y_train) #
-eval_input_fn = make_input_fn(dfeval, y_eval, num_epochs=1, shuffle=False)
+train_input_fn = make_input_fn(dftrain, y_train) # Calls the input function that was returned to get a dataset object which can be fed to the model
+eval_input_fn = make_input_fn(dfeval, y_eval, num_epochs=1, shuffle=False) # Same thing but for the evaluation, shuffling isn't needed, as it is just a test
 
-            
+linear_est = tf.estimator.LinearClassifier(feature_columns=feature_columns) 
+
+# Training the Model:
+
+linear_est.train(train_input_fn) # Trains the model
+result = linear_est.evaluate(eval_input_fn) # # Gets model metrics/stas via testing on the testing data
+
+clear_output() # Clears console output
+print(result['accuracy']) # The result variable us simiply a dict of stats about our model
+
+result = list(linear_est.predict(eval_input_fn))
+
+print(dfeval.loc[3])
+print(y_eval.loc[3])
+print(result[3]['probabilities'][1])
