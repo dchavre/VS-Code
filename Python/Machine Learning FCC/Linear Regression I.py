@@ -2,7 +2,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 import numpy as np
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt
 import random
 from IPython.display import clear_output
 
@@ -21,8 +21,8 @@ dfeval = pd.read_csv('https://storage.googleapis.com/tf-datasets/titanic/eval.cs
 y_train = dftrain.pop('survived')
 y_eval = dfeval.pop('survived')
 
-print(dftrain.head())
-print(dftrain.shape)
+# print(dftrain.head())
+# print(dftrain.shape)
 
 # Optional Info For Inference: 
 
@@ -45,7 +45,7 @@ for feature_name in CATEGORICAL_COLUMNS:
 for feature_name in NUMERIC_COLUMNS:
     feature_columns.append(tf.feature_column.numeric_column(feature_name, dtype=tf.float32))
 
-def make_input_fn(data_df, label_df, num_epochs=10, shuffle=True, batch_size=32):
+def make_input_fn(data_df, label_df, num_epochs=12, shuffle=True, batch_size=32):
     def input_function(): # Inner function, will be returned
         ds = tf.data.Dataset.from_tensor_slices((dict(data_df), label_df)) # creates tf.data.Dataset object
         if shuffle:
