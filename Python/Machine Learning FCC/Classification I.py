@@ -79,8 +79,8 @@ def input_fn(features, batch_size=256):
 features = ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth']
 predict = {}
 
+# Allows users  to input some values:
 print('Please type numeric values as prompted.')
-
 for feature in features:
     valid = True
     while valid:
@@ -96,5 +96,4 @@ for feature in features:
 
         print('Prediction is "{}" ({:;1f}%)'.format(
               SPECIES[class_id], 100 * probability))
-        
-        
+
