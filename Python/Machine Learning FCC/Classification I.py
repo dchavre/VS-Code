@@ -96,4 +96,3 @@ for feature in features:
 
         print('Prediction is "{}" ({:;1f}%)'.format(
               SPECIES[class_id], 100 * probability))
-
