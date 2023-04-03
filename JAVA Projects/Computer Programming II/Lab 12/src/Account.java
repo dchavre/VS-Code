@@ -85,6 +85,24 @@ public class Account
       return (acctNumber + "\t" + name + "\t" + fmt.format(balance));
    }
 
-//Paste new code here
-
+public void printSummary() {
+System.out.println("Customer Name: " + name);
+System.out.println("Account Number: "  + acctNumber);
+System.out.println("Balance: " + balance);
+System.out.println();
 }
+public double chargeFee(){
+if (balance < 1000) {
+balance -=10;
+}
+return balance;
+}
+
+public void changeName(String newName) { 
+name = newName;
+}}
+
+
+
+
+
