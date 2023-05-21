@@ -127,16 +127,16 @@ def Wordle(word):
     # Losing case:
     if counter >= 6 and win == False:
         print('You have lost, the word was' , colored(str(word), "red") + '.')
+        
+    # Reset case:
+    reset = input('Would you like to try again? y/n: ')
+    if reset == 'y':
+        l = load_words()
+        word = word_selection(l)
+        Wordle(word)
 
 l = load_words()
 word = word_selection(l)
 Wordle(word)
-
-# Reset case:
-reset = input('Would you like to try again? y/n: ')
-if reset == 'y':
-    l = load_words()
-    word = word_selection(l)
-    Wordle(word)
 
 os.chdir(original_directory) # Changing the directory to allow for normal use afterwards
