@@ -31,8 +31,7 @@ def word_selection(wordlist):
     for i in wordlist:
         if len(i) == 5:
             l.append(i)
-    # UNCOMMENT LATER: return random.choice(l)
-    return "close"
+    return random.choice(l)
 
 def input_word(): # Using recursion to take a guess
     guess = input('Guess: ')
