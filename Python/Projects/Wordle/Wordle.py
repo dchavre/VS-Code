@@ -75,7 +75,7 @@ def letter_analyzation(guess, word, x, green, yellow, grey, guess_output, op):
     for k in range(0, 5, 1):
         if guess[k] not in not_found:
             x = colored(str(guess[k]), 'grey')
-            op += x
+            op += x                                       
             grey[k] = op
             op = ''
             
@@ -105,7 +105,7 @@ def Wordle(word):
     global yellow
     global grey
 
-    # Defining some variables to allow the 
+    # Defining some variables to allow for retrying:
     win = False
     counter = 0
 
