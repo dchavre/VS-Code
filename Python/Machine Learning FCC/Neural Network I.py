@@ -35,3 +35,35 @@ model.fit(train_images, train_labels, epochs = 10)
 # Evaluating the model:
 test_loss, test_acc = model.evaluate(test_images, test_labels, verbose = 1)
 print('Test accuracy:', test_acc)
+
+COLOR = 'white'
+plt.rcParams['text.color'] = COLOR
+plt.rcParams['axes.labelcolor'] = COLOR
+
+def predict(model, image, correct_label):
+    prediction = model.predict(np.array([image]))
+    predicted_class = class_names[np.argmax(prediction)]
+    
+    show_image(image, class_names[correct_label], predicted_class)
+    
+def show_image(img, label, guess):
+    plt.figure()
+    plt.imshow(img, cmap=plt.cm.binary)
+    plt.title('Expected: ' + label)
+    plt.xlabel('Guess: ' + guess)
+    plt.grid(False)
+    plt.show()
+        
+def get_number():
+    while True:
+        num=input('Pick a number: ')
+        if num.isdigit():
+            num = int(num)
+            if 0 <= num <= 1000:
+                return int(num)
+            else:
+                print('An error occurred.')
+num = get_number()
+image = test_images[num]
+label = test_labels[num]
+predict(model, image, label)
